@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: 'JustAnotherHandRegular';
+        src: url(../src/fonts/JustAnotherHand-Regular.ttf);
+    }
+    @font-face {
+        font-family: 'RubikRegular';
+        src: url(../src/fonts/Rubik-Regular.ttf);
+    }
+    @font-face {
+        font-family: 'RubikBold';
+        src: url(../src/fonts/Rubik-Bold.ttf);
+    }
+    @font-face {
+        font-family: 'RubikSemibold';
+        src: url(../src/fonts/Rubik-SemiBold.ttf);
+    }
+}
+
+.small-shadow {
+    box-shadow: 0.1rem 0.1rem 0.7rem rgba(0, 0, 0, 0.2);
+}
+.is-active {
+    color: #CFD266;
+}
