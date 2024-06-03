@@ -56,34 +56,42 @@ class Seeder
         $this->db->create('fasilitas',[
             'id' => 1,
             'nama' => 'Ruang Keluarga Luas',
+            'gambar' => '1.png',
         ]);
         $this->db->create('fasilitas',[
             'id' => 2,
             'nama' => 'Fasilitas Hiburan',
+            'gambar' => '2.png',
         ]);
         $this->db->create('fasilitas',[
             'id' => 3,
             'nama' => 'Mini Bar dan Pembuat Kopi/Teh',
+            'gambar' => '3.png',
         ]);
         $this->db->create('fasilitas',[
             'id' => 4,
             'nama' => 'Kamar Mandi Premium',
+            'gambar' => '4.png',
         ]);
         $this->db->create('fasilitas',[
             'id' => 5,
             'nama' => 'Ruang Keluarga',
+            'gambar' => '5.png',
         ]);
         $this->db->create('fasilitas',[
             'id' => 6,
             'nama' => 'Kamar Anak Khusus',
+            'gambar' => '6.png',
         ]);
         $this->db->create('fasilitas',[
             'id' => 7,
             'nama' => 'Bathub',
+            'gambar' => '7.png',
         ]);
         $this->db->create('fasilitas',[
             'id' => 8,
             'nama' => 'Dapur Kecil',
+            'gambar' => '8.png',
         ]);
 
         //TIPE_KAMAR
@@ -91,19 +99,22 @@ class Seeder
             'id' => 1,
             'tipe' => 'Standart Room',
             'harga' => 3000000,
-            'deskripsi' => 'Didesain dengan elegan dan dilengkapi dengan fasilitas modern, kamar ini menawarkan tempat tidur king size yang nyaman, televisi layar datar, akses Wi-Fi gratis, meja kerja, dan kamar mandi pribadi dengan perlengkapan mandi premium.'
+            'deskripsi' => 'Didesain dengan elegan dan dilengkapi dengan fasilitas modern, kamar ini menawarkan tempat tidur king size yang nyaman, televisi layar datar, akses Wi-Fi gratis, meja kerja, dan kamar mandi pribadi dengan perlengkapan mandi premium.',
+            'gambar' => 'standart.png',
         ]);
         $this->db->create('tipe_kamar',[
             'id' => 2,
             'tipe' => 'Superior Room',
             'harga' => 4000000,
-            'deskripsi' => 'Kamar ini dilengkapi dengan tempat tidur queen atau twin, televisi layar datar, Wi-Fi gratis, minibar, dan fasilitas pembuat kopi/teh. Kamar mandi dalam dengan shower modern dan perlengkapan mandi eksklusif menjamin kenyamanan Anda selama menginap.'
+            'deskripsi' => 'Kamar ini dilengkapi dengan tempat tidur queen atau twin, televisi layar datar, Wi-Fi gratis, minibar, dan fasilitas pembuat kopi/teh. Kamar mandi dalam dengan shower modern dan perlengkapan mandi eksklusif menjamin kenyamanan Anda selama menginap.',
+            'gambar' => 'superior.png',
         ]);
         $this->db->create('tipe_kamar',[
             'id' => 3,
             'tipe' => 'Twin Room',
             'harga' => 5000000,
-            'deskripsi' => 'Suite ini memiliki ruang tamu terpisah, tempat tidur king, televisi layar datar di setiap kamar, dan akses Wi-Fi gratis. Dapur kecil yang lengkap, meja kerja besar, dan kamar mandi mewah dengan bathtub dan shower terpisah.'
+            'deskripsi' => 'Suite ini memiliki ruang tamu terpisah, tempat tidur king, televisi layar datar di setiap kamar, dan akses Wi-Fi gratis. Dapur kecil yang lengkap, meja kerja besar, dan kamar mandi mewah dengan bathtub dan shower terpisah.',
+            'gambar' => 'twin.png',
         ]);
 
         //DETAIL_TIPE_KAMAR

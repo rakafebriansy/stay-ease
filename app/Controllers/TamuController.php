@@ -101,7 +101,22 @@ class TamuController
             'tipe_kamars' => $results
         ]);
     }
-
+    public function setPesan($id_tipe_kamar)
+    {
+        $sql_fasilitas = <<<SQL
+            SELECT f.nama, f.gambar, dtk.* FROM detail_tipe_kamar dtk
+            JOIN tipe_kamar tk ON (tk.id = dtk.id_tipe_kamar)
+            JOIN fasilitas f ON (f.id = dtk.id_fasilitas)
+            WHERE tk.id = $id_tipe_kamar;
+        SQL;
+        $tipe_kamar = new TipeKamar();
+        $result = $tipe_kamar->find($id_tipe_kamar); 
+        $fasilitas = $this->db->executeNoBind($sql_fasilitas,true);
+        View::set('pages/tamu-pesan',[
+            'tipe_kamar' => $result,
+            'fasilitas' => $fasilitas
+        ]);
+    }
 }
 
 ?>

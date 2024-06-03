@@ -1,84 +1,48 @@
 <?php ob_start(); 
 $baseurl = '/stay-ease/'; 
+$css = '../public/dist/output.css';
+$js = '../public/dist/script.js';
 ?>
 <nav class="flex justify-center small-shadow fixed w-full z-30 bg-white">
     <div class="w-[90%] flex justify-center items-center relative h-[4rem]">
-        <img src="public/img/logo-no-bg.png" class=" h-12 absolute left-8" alt="">
+        <img src="../public/img/logo-no-bg.png" class=" h-12 absolute left-8" alt="">
         <ul class="flex justify-center gap-4 font-rubik-semibold">
-            <li><a href="#hero-img" class="is-active">Beranda</a></li>
-            <li><a href="#tipe-kamar">Kamar</a></li>
+            <li><a href="<?=$baseurl . 'tamu-beranda'?>">Beranda</a></li>
+            <li><a href="#" class="is-active">Kamar</a></li>
         </ul>
     </div>
 </nav>
 <main>
-    <div id="hero-img" class="relative w-full ">
-        <img src="public/img/hero.png" class="h-[100vh] w-full" alt="">
-        <div class="absolute left-1/2 top-1/2 flex flex-col gap-3 -translate-x-1/2 -translate-y-1/2 z-10 text-center text-white">
-            <h1 class="font-rubik-bold text-8xl">StayEase</h1>
-            <p class="text-2xl">Reservasi Hotel dengan Mudah dan Nyaman</p>
-        </div>
-    </div>
-    <div id="tentang-kami" class="my-16 flex justify-center">
-        <div class="w-[80%] grid grid-cols-2 gap-10">
-            <img src="public/img/about-us.png" class=" rounded-2xl shadow-lg" alt="">
-            <div class="flex flex-col gap-3 justify-center">
-                <p class="font-rubik-bold text-lg text-prime">Selamat datang</p>
-                <h2 class="font-rubik-bold text-6xl">Tentang Kami</h2>
-                <p class="break-words">Selamat datang di StayEase, tempat di mana kenyamanan, keramahtamahan, dan layanan terbaik berpadu dalam harmoni yang sempurna. Terletak di lokasi strategis yang mudah diakses, StayEase merupakan pilihan ideal bagi pelancong bisnis maupun rekreasi yang mencari pengalaman menginap tak terlupakan.</p>
-            </div>
-        </div>
-    </div>
-    <div id="visi-misi" class="my-16 flex justify-center">
-        <div class="w-[80%] grid grid-cols-2 gap-10">
-            <div class="flex justify-between gap-4 items-center">
-                <img src="public/img/ellipse.png" alt="">
-                <div>
-                    <p class="font-rubik-bold">Visi</p>
-                    <p class="break-words">“Menjadi hotel terkemuka yang mengutamakan kenyamanan dan kepuasan tamu dengan pelayanan terbaik dan fasilitas unggul, serta berkomitmen memberikan pengalaman menginap yang tak terlupakan.”</p>
-                </div>
-            </div>
-            <div class="flex justify-between gap-4 items-center">
-                <img src="public/img/ellipse.png" alt="">
-                <div>
-                    <p class="font-rubik-bold">Misi</p>
-                    <ol>
-                        <li>1. Memberikan Pelayanan Prima</li>
-                        <li>2. Menyediakan Fasilitas Unggul</li>
-                        <li>3.  Menciptakan Pengalaman Menginap yang Tak Terlupakan</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="text-4xl flex justify-center my-16">
-        <div class="w-[90%]">
-            <h2>Our Living Room</h2>
-            <h2>Rooms & Suits</h2>
-        </div>
-    </div>
-    <div id="tipe-kamar" class="flex justify-center my-16">
-        <div class="w-[90%]">
-            <h2 class="text-4xl font-rubik-semibold text-center">Tipe Kamar Terbaik</h2>
-            <div class="grid grid-cols-3 gap-6 my-10">
-                <?php foreach($tipe_kamars as $tipe_kamar): ?>
-                    <div class="flex flex-col rounded-xl items-center box-border p-3 shadow-md">
-                        <img src="public/img/rooms/<?=$tipe_kamar['gambar']?>" class="rounded-lg" alt="">
-                        <div class="mt-3 flex flex-col justify-between items-center h-[16rem]">
-                            <h3 class="text-center font-rubik-bold"><?= $tipe_kamar['tipe'];?></h3>
-                            <p class="text-xs break-words text-center">
-                            <?= $tipe_kamar['deskripsi'];?>
-                            </p>
-                            <a href="<?=$baseurl . 'tamu-pesan/' . $tipe_kamar['id']?>" class="text-lg bg-anchor hover:bg-prime py-1 px-4 rounded-md w-fit">View</a>
-                        </div>
+    <div class="w-full flex justify-center py-[8rem]">
+        <div class="w-[80%] grid grid-cols-2 gap-8">
+            <img src="../public/img/detail-rooms/<?=$tipe_kamar['gambar']?>" alt="">
+            <div class=" text-sm">
+                <h2 class="font-rubik-bold text-4xl mb-3 text-[#2F4672]">Pesan Kamar</h2>
+                <p class="break-words mb-2"><?= $tipe_kamar['deskripsi'];?></p>
+                <p class="font-rubik-bold text-xl mb-4">Fasilitas</p>
+                <ul class="flex font-rubik-semibold gap-4 justify-between">
+                    <?php foreach ($fasilitas as $fasilita): ?>
+                        <li class="flex flex-col justify-start items-center w-36 gap-2">
+                            <img class="border-prime border-8 rounded-full " src="../public/img/fasilitas/<?=$fasilita['gambar']?>" alt="">
+                            <p class="text-center"><?= $fasilita['nama'];?></p>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <div class="w-full flex justify-between items-center text-white mt-4 text-lg">
+                    <div class="p-3 bg-prime flex flex-col justify-between items-start gap-3 text-white font-rubik-semibold">
+                        <p>STANDART ROOM</p>
+                        <div class="w-[40%] h-[0.2rem] bg-white"></div>
+                        <p>Rp <?= number_format($tipe_kamar['harga']);?>,-</p>
                     </div>
-                <?php endforeach; ?>
+                    <a href="<?=$baseurl . 'tamu-reservasi/' . $tipe_kamar['id']?>" class="bg-prime py-2 px-4 rounded-full">Pesan Sekarang</a>
+                </div>
             </div>
         </div>
     </div>
 </main>
 <footer class="mt-16 px-8 py-4 flex justify-between bg-[#FBFBFB] text-xs">
     <div class="w-[20%]">
-        <img src="public/img/logo-no-bg.png" class="mb-2" alt="">
+        <img src="../public/img/logo-no-bg.png" class="mb-2" alt="">
         <p class="break-words">Sistem informasi berbasis website yang menyediakan layanan untuk reservasi hotel sehingga dapat memudahkan dan memfasilitasi tamu dalam pemesanan hotel</p>
     </div>
     <div class="w-[20%] flex flex-col gap-3">
