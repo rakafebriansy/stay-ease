@@ -16,6 +16,10 @@ class TamuController
     {
         View::set('pages/tamu-login');
     }
+    public function setRegister()
+    {
+        View::set('pages/tamu-register');
+    }
     public function index()
     {
         View::set('pages/tamu-beranda');

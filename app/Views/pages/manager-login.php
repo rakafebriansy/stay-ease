@@ -40,14 +40,14 @@ $baseurl = '/stay-ease/';
                 </div>
                 <div class="mb-3">
                     <label for="password" class="mb-2">Password</label>
-                    <input type="text" name="password" class="border-border-gray border-[0.05rem] w-full h-[3rem] p-2 rounded-md" name="" id="">
+                    <input type="password" name="password" class="border-border-gray border-[0.05rem] w-full h-[3rem] p-2 rounded-md" name="" id="">
                 </div>
                 <div class="mb-3 flex gap-2 ">
                     <input type="checkbox" class=" w-4 bg-blue-500" name="rememberme" id="">
                     <p>Ingatkan saya</p>
                 </div>
                 <div class="w-full">
-                    <button class="w-full rounded-md bg-prime py-3 text-white">LOGIN</button>
+                    <button class="w-full rounded-md bg-prime py-3 text-white shadow-md">LOGIN</button>
                 </div>
             </div>
         </div>

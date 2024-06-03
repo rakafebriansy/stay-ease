@@ -14,7 +14,7 @@ $baseurl = '/stay-ease/';
         <div class="p-4 fixed top-0 w-full">
             <img src="public/img/logo-no-bg.png" class="h-[2.5rem]" alt="">
         </div>
-        <div class="w-full h-screen flex justify-center items-center text-xs">
+        <div class="w-full h-screen flex flex-col justify-center gap-4 items-center text-xs">
             <div class="w-[60%]">
                 <div class="mb-3">
                     <p class="mb-2">Login sebagai</p>
@@ -40,17 +40,17 @@ $baseurl = '/stay-ease/';
                 </div>
                 <div class="mb-3">
                     <label for="password" class="mb-2">Password</label>
-                    <input type="text" name="password" class="border-border-gray border-[0.05rem] w-full h-[3rem] p-2 rounded-md" name="" id="">
+                    <input type="password" name="password" class="border-border-gray border-[0.05rem] w-full h-[3rem] p-2 rounded-md" name="" id="">
                 </div>
                 <div class="mb-3 flex gap-2 ">
                     <input type="checkbox" class=" w-4 bg-blue-500" name="rememberme" id="">
                     <p>Ingatkan saya</p>
                 </div>
                 <div class="w-full">
-                    <button class="w-full rounded-md bg-prime py-3 text-white">LOGIN</button>
+                    <button class="w-full rounded-md bg-prime py-3 text-white shadow-md">LOGIN</button>
                 </div>
             </div>
-            <p>Belum mempunyai akun ? <a href="<?=$baseurl . 'tamu-register'?>">Daftar disini </a></p>
+            <p>Belum mempunyai akun ? <a href="<?=$baseurl . 'tamu-register'?>" class="hover:underline text-blue-500 font-rubik-semibold">Daftar disini </a></p>
         </div>
     </div>
 </main>
