@@ -10,7 +10,7 @@ class Seeder
     {
         $this->db = $db;
     }
-    public function fresh()
+    public function clear()
     {
         $this->db->executeNonQuery('DELETE FROM reservasi; ALTER TABLE reservasi AUTO_INCREMENT = 1');
         $this->db->executeNonQuery('DELETE FROM kamar; ALTER TABLE kamar AUTO_INCREMENT = 1');
@@ -20,7 +20,9 @@ class Seeder
         $this->db->executeNonQuery('DELETE FROM tamu; ALTER TABLE tamu AUTO_INCREMENT = 1');
         $this->db->executeNonQuery('DELETE FROM resepsionis; ALTER TABLE resepsionis AUTO_INCREMENT = 1');
         $this->db->executeNonQuery('DELETE FROM manager; ALTER TABLE manager AUTO_INCREMENT = 1');
-
+    }
+    public function new()
+    {
         //MANAGER
         $this->db->create('manager',[
             'id' => 1,
@@ -43,7 +45,7 @@ class Seeder
         //TAMU
         $this->db->create('tamu',[
             'id' => 1,
-            'nama' => 'raka',
+            'username' => 'raka',
             'nik' => '1234567890123456',
             'no_telp' => '08123456789',
             'email' => 'raka@gmail.com',
@@ -63,12 +65,45 @@ class Seeder
             'id' => 3,
             'nama' => 'Mini Bar dan Pembuat Kopi/Teh',
         ]);
+        $this->db->create('fasilitas',[
+            'id' => 4,
+            'nama' => 'Kamar Mandi Premium',
+        ]);
+        $this->db->create('fasilitas',[
+            'id' => 5,
+            'nama' => 'Ruang Keluarga',
+        ]);
+        $this->db->create('fasilitas',[
+            'id' => 6,
+            'nama' => 'Kamar Anak Khusus',
+        ]);
+        $this->db->create('fasilitas',[
+            'id' => 7,
+            'nama' => 'Bathub',
+        ]);
+        $this->db->create('fasilitas',[
+            'id' => 8,
+            'nama' => 'Dapur Kecil',
+        ]);
 
         //TIPE_KAMAR
         $this->db->create('tipe_kamar',[
             'id' => 1,
             'tipe' => 'Standart Room',
-            'harga' => 3000000
+            'harga' => 3000000,
+            'deskripsi' => 'Didesain dengan elegan dan dilengkapi dengan fasilitas modern, kamar ini menawarkan tempat tidur king size yang nyaman, televisi layar datar, akses Wi-Fi gratis, meja kerja, dan kamar mandi pribadi dengan perlengkapan mandi premium.'
+        ]);
+        $this->db->create('tipe_kamar',[
+            'id' => 2,
+            'tipe' => 'Superior Room',
+            'harga' => 4000000,
+            'deskripsi' => 'Kamar ini dilengkapi dengan tempat tidur queen atau twin, televisi layar datar, Wi-Fi gratis, minibar, dan fasilitas pembuat kopi/teh. Kamar mandi dalam dengan shower modern dan perlengkapan mandi eksklusif menjamin kenyamanan Anda selama menginap.'
+        ]);
+        $this->db->create('tipe_kamar',[
+            'id' => 3,
+            'tipe' => 'Twin Room',
+            'harga' => 5000000,
+            'deskripsi' => 'Suite ini memiliki ruang tamu terpisah, tempat tidur king, televisi layar datar di setiap kamar, dan akses Wi-Fi gratis. Dapur kecil yang lengkap, meja kerja besar, dan kamar mandi mewah dengan bathtub dan shower terpisah.'
         ]);
 
         //DETAIL_TIPE_KAMAR
@@ -87,8 +122,42 @@ class Seeder
             'id_fasilitas' => 3,
             'id_tipe_kamar' => 1
         ]);
+        $this->db->create('detail_tipe_kamar',[
+            'id' => 4,
+            'id_fasilitas' => 4,
+            'id_tipe_kamar' => 2
+        ]);
+        $this->db->create('detail_tipe_kamar',[
+            'id' => 5,
+            'id_fasilitas' => 5,
+            'id_tipe_kamar' => 2
+        ]);
+        $this->db->create('detail_tipe_kamar',[
+            'id' => 6,
+            'id_fasilitas' => 6,
+            'id_tipe_kamar' => 2
+        ]);
+        $this->db->create('detail_tipe_kamar',[
+            'id' => 7,
+            'id_fasilitas' => 1,
+            'id_tipe_kamar' => 3
+        ]);
+        $this->db->create('detail_tipe_kamar',[
+            'id' => 8,
+            'id_fasilitas' => 7,
+            'id_tipe_kamar' => 3
+        ]);
+        $this->db->create('detail_tipe_kamar',[
+            'id' => 9,
+            'id_fasilitas' => 8,
+            'id_tipe_kamar' => 3
+        ]);
     }
-
+    public function fresh()
+    {
+        $this->clear();
+        $this->new();
+    }
 }
 
 ?>

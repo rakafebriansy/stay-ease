@@ -1,4 +1,6 @@
-<?php ob_start(); ?>
+<?php ob_start(); 
+$baseurl = '/stay-ease/'; 
+?>
 <nav class="flex justify-center small-shadow fixed w-full z-30 bg-white">
     <div class="w-[90%] flex justify-center items-center relative h-[4rem]">
         <img src="public/img/logo-no-bg.png" class=" h-12 absolute left-8" alt="">
@@ -58,23 +60,23 @@
         <div class="w-[90%]">
             <h2 class="text-4xl font-rubik-semibold text-center">Tipe Kamar Terbaik</h2>
             <div class="grid grid-cols-3 gap-6 my-10">
-                <?php for($i=0; $i<3; $i++): ?>
+                <?php foreach($tipe_kamars as $tipe_kamar): ?>
                     <div class="flex flex-col rounded-xl items-center box-border p-3 shadow-md">
                         <img src="public/img/rooms/superior.png" class="rounded-lg" alt="">
                         <div class="mt-3 flex flex-col justify-between items-center h-[16rem]">
-                            <h3 class="text-center font-rubik-bold">Superior Room</h3>
+                            <h3 class="text-center font-rubik-bold"><?= $tipe_kamar['tipe'];?></h3>
                             <p class="text-xs break-words text-center">
-                            Didesain dengan elegan dan dilengkapi dengan fasilitas modern, kamar ini menawarkan tempat tidur king size yang nyaman, televisi layar datar, akses Wi-Fi gratis, meja kerja, dan kamar mandi pribadi dengan perlengkapan mandi premium.
+                            <?= $tipe_kamar['deskripsi'];?>
                             </p>
-                            <a href="" class="text-lg bg-anchor hover:bg-prime py-1 px-4 rounded-md w-fit">View</a>
+                            <a href="<?=$baseurl . 'pesan/' . $tipe_kamar['id']?>" class="text-lg bg-anchor hover:bg-prime py-1 px-4 rounded-md w-fit">View</a>
                         </div>
                     </div>
-                <?php endfor; ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
 </main>
-<footer class="mt-16 mb-8 px-8 flex justify-between bg-[#FBFBFB] text-xs">
+<footer class="mt-16 px-8 py-4 flex justify-between bg-[#FBFBFB] text-xs">
     <div class="w-[20%]">
         <img src="public/img/logo-no-bg.png" class="mb-2" alt="">
         <p class="break-words">Sistem informasi berbasis website yang menyediakan layanan untuk reservasi hotel sehingga dapat memudahkan dan memfasilitasi tamu dalam pemesanan hotel</p>

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Core\View;
 use App\Database;
+use App\Models\Resepsionis;
 
 class ResepsionisController
 {
@@ -20,16 +21,9 @@ class ResepsionisController
     }
     public function login()
     {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $sql = <<<SQL
-            SELECT username, password FROM resepsionis WHERE username = :username AND password = :password;
-        SQL;
-        $result = $this->db->executeNonQuery($sql,[
-            'username' => $username,
-            'password' => $password
-        ]);
-        if($result) {
+        $resepsionis = new Resepsionis();
+        $result = $resepsionis->find($_POST['username'],'username');
+        if($result && $result['password'] == $_POST['password']) {
             View::redirectTo($this->baseurl . 'resepsionis-beranda');
         }
         View::redirectWith($this->baseurl . 'resepsionis-login', 'Username atau password salah',true);

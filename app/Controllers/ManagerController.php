@@ -3,6 +3,8 @@
 namespace App\Controllers;
 use App\Core\View;
 use App\Database;
+use App\Models\Manager;
+use App\Models\TipeKamar;
 
 class ManagerController
 {
@@ -20,23 +22,21 @@ class ManagerController
     }
     public function login()
     {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $sql = <<<SQL
-            SELECT username, password FROM manager WHERE username = :username AND password = :password;
-        SQL;
-        $result = $this->db->executeNonQuery($sql,[
-            'username' => $username,
-            'password' => $password
-        ]);
-        if($result) {
+        $manager = new Manager();
+        $result = $manager->find($_POST['username'],'username');
+        if($result && $result['password'] == $_POST['password']) {
             View::redirectTo($this->baseurl . 'manager-beranda');
         }
         View::redirectWith($this->baseurl . 'manager-login', 'Username atau password salah',true);
     }
     public function index()
     {
-        View::set('pages/manager-beranda');
+        $tipe_kamar = new TipeKamar();
+        $tipe_kamars = $tipe_kamar->all();
+        // var_dump($tipe_kamars);die;
+        View::set('pages/manager-beranda',[
+            'tipe_kamars' => $tipe_kamars
+        ]);
     }
 }
 

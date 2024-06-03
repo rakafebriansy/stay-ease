@@ -17,7 +17,7 @@ class LandingController
     }
     public function index()
     {
-        View::redirectTo($this->baseurl . 'manager-login');
+        View::redirectTo($this->baseurl . 'tamu-login');
     }
     public function fresh()
     {

@@ -3,6 +3,8 @@
 namespace App\Controllers;
 use App\Core\View;
 use App\Database;
+use App\Models\Tamu;
+use App\Models\TipeKamar;
 
 class TamuController
 {
@@ -20,16 +22,9 @@ class TamuController
     }
     public function login()
     {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $sql = <<<SQL
-            SELECT username, password FROM tamu WHERE username = :username AND password = :password;
-        SQL;
-        $result = $this->db->executeNonQuery($sql,[
-            'username' => $username,
-            'password' => $password
-        ]);
-        if($result) {
+        $tamu = new Tamu();
+        $result = $tamu->find($_POST['username'],'username');
+        if($result && $result['password'] == $_POST['password']) {
             View::redirectTo($this->baseurl . 'tamu-beranda');
         }
         View::redirectWith($this->baseurl . 'tamu-login', 'Username atau password salah',true);
@@ -85,7 +80,8 @@ class TamuController
         }
 
         //REGISTER
-        if($this->db->create('tamu',[
+        $tamu = new Tamu();
+        if($tamu->create([
             'username' => $username,
             'nik' => $nik,
             'no_telp' => $no_telepon,
@@ -98,7 +94,12 @@ class TamuController
     }
     public function index()
     {
-        View::set('pages/tamu-beranda');
+        $tipe_kamar = new TipeKamar();
+        $results = $tipe_kamar->all();
+        // var_dump($results);die;
+        View::set('pages/tamu-beranda',[
+            'tipe_kamars' => $results
+        ]);
     }
 
 }
