@@ -23,20 +23,20 @@ class ManagerController
         $username = $_POST['username'];
         $password = $_POST['password'];
         $sql = <<<SQL
-            SELECT username, password FROM tamu WHERE username = :username AND password = :password;
+            SELECT username, password FROM manager WHERE username = :username AND password = :password;
         SQL;
         $result = $this->db->executeNonQuery($sql,[
             'username' => $username,
             'password' => $password
         ]);
         if($result) {
-            View::redirectTo($this->baseurl . 'tamu-beranda');
+            View::redirectTo($this->baseurl . 'manager-beranda');
         }
-        View::redirectWith($this->baseurl . 'tamu-login', 'Username atau password salah');
+        View::redirectWith($this->baseurl . 'manager-login', 'Username atau password salah',true);
     }
     public function index()
     {
-        View::set('pages/tamu-beranda');
+        View::set('pages/manager-beranda');
     }
 }
 

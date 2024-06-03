@@ -16,7 +16,7 @@ $baseurl = '/stay-ease/';
             <img src="public/img/logo-no-bg.png" class="h-[2.5rem]" alt="">
         </div>
         <div class="w-full h-screen flex justify-center items-center text-xs">
-            <div class="w-[60%]">
+            <form action="<?=$baseurl . 'resepsionis-login'?>" method="POST" class="w-[60%]">
                 <div class="mb-3">
                     <p class="mb-2">Login sebagai</p>
                     <div class="flex justify-between w-full">
@@ -50,7 +50,7 @@ $baseurl = '/stay-ease/';
                 <div class="w-full">
                     <button class="w-full rounded-md bg-prime py-3 text-white shadow-md">LOGIN</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </main>
