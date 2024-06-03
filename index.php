@@ -15,6 +15,7 @@ Router::add('POST', $baseurl . 'manager-login', ManagerController::class, 'login
 Router::add('POST', $baseurl . 'manager-beranda', ManagerController::class, 'index');
 Router::add('GET', $baseurl . 'resepsionis-login', ResepsionisController::class, 'setLogin');
 Router::add('GET', $baseurl . 'tamu-register', TamuController::class, 'setRegister');
+Router::add('POST', $baseurl . 'tamu-register', TamuController::class, 'register');
 Router::add('GET', $baseurl . 'tamu-login', TamuController::class, 'setLogin');
 Router::add('POST', $baseurl . 'tamu-login', TamuController::class, 'login');
 Router::add('GET', $baseurl . 'tamu-beranda', TamuController::class, 'index');

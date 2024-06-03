@@ -15,7 +15,7 @@ $baseurl = '/stay-ease/';
             <img src="public/img/logo-no-bg.png" class="h-[2.5rem]" alt="">
         </div>
         <div class="w-full h-screen flex flex-col justify-center gap-4 items-center text-xs">
-            <div class="w-[60%]">
+            <form action="<?=$baseurl?>tamu-register" method="POST" class="w-[60%]">
                 <div class="w-full mb-3">
                     <a href="<?=$baseurl . 'tamu-login'?>" class="w-[2.5rem] h-[2.5rem] flex justify-center items-center rounded-full bg-gray-300">
                         <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,9 +47,9 @@ $baseurl = '/stay-ease/';
                     <p class="text-xs text-second">*Harus kombinasi huruf dan angka</p>
                 </div>
                 <div class="w-full">
-                    <button class="w-full rounded-md bg-prime py-3 text-white shadow-md">REGISTER</button>
+                    <button type="submit" class="w-full rounded-md bg-prime py-3 text-white shadow-md">REGISTER</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </main>
