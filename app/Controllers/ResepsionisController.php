@@ -14,7 +14,7 @@ class ResepsionisController
     }
     public function setLogin()
     {
-        View::set('pages/resepsionis-landing');
+        View::set('pages/resepsionis-login');
     }
 }
 

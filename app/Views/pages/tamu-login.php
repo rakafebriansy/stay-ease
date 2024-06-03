@@ -19,18 +19,18 @@ $baseurl = '/stay-ease/';
                 <div class="mb-3">
                     <p class="mb-2">Login sebagai</p>
                     <div class="flex justify-between w-full">
-                        <a href="#" class="border-border-gray relative border-[0.05rem] flex flex-col justify-center items-center w-[6rem] h-[4rem] is-role-checked">
+                        <a href="<?=$baseurl?>manager-login" class="border-border-gray relative border-[0.05rem] flex flex-col justify-center items-center w-[6rem] h-[4rem]">
                             <img src="public/img/manager.png" class="w-[2rem] h-[2rem]" alt="">
                             <p>Manager</p>
-                            <img src="public/img/role-checked.png" class="absolute bottom-[-0.7rem]" alt="">
                         </a>
                         <a href="<?=$baseurl?>resepsionis-login" class="border-border-gray relative border-[0.05rem] flex flex-col justify-center items-center w-[6rem] h-[4rem]">
                             <img src="public/img/resepsionis.png" class="w-[2rem] h-[2rem]" alt="">
                             <p>Resepsionis</p>
                         </a>
-                        <a href="<?=$baseurl?>tamu-login" class="border-border-gray relative border-[0.05rem] flex flex-col justify-center items-center w-[6rem] h-[4rem]">
+                        <a href="#" class="border-border-gray relative border-[0.05rem] flex flex-col justify-center items-center w-[6rem] h-[4rem] is-role-checked">
                             <img src="public/img/tamu.png" class="w-[2rem] h-[2rem]" alt="">
                             <p>Tamu</p>
+                            <img src="public/img/role-checked.png" class="absolute bottom-[-0.7rem]" alt="">
                         </a>
                     </div>
                 </div>
@@ -50,6 +50,7 @@ $baseurl = '/stay-ease/';
                     <button class="w-full rounded-md bg-prime py-3 text-white">LOGIN</button>
                 </div>
             </div>
+            <p>Belum mempunyai akun ? <a href="<?=$baseurl . 'tamu-register'?>">Daftar disini </a></p>
         </div>
     </div>
 </main>

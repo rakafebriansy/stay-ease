@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="<?= $css ?? 'public/dist/output.css'; ?>">
 </head>
 <body class="relative font-rubik">
-    <?php $baseurl = '/stay-ease/';  ?>
     <?= $body ?? ''; ?>
     <script src="<?=$js ?? 'public/dist/script.js'?>"></script>
 </body>
