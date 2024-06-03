@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         'prime': '#CFD266',
         'anchor': '#F1F29B',
+        'border-gray': '#8692A6'
       }
     },
     fontFamily: {

@@ -7,8 +7,9 @@ use App\Seeder;
 
 class LandingController
 {
-    private Database $db;
-    private Seeder $seeder;
+    private $baseurl = '/stay-ease/'; 
+    private $db;
+    private $seeder;
 
     public function __construct()
     {
@@ -16,7 +17,7 @@ class LandingController
     }
     public function index()
     {
-        View::set('pages/index');
+        View::redirectTo($this->baseurl . 'manager-login');
     }
     public function fresh()
     {

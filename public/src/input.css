@@ -27,3 +27,6 @@
 .is-active {
     color: #CFD266;
 }
+.is-role-checked {
+    @apply border-prime
+}
