@@ -11,7 +11,7 @@ class Database
     private string $password = '';
     protected \PDO|null $connection = null;
 
-    public function connect(): void
+    private function connect(): void
     {
         try {
             $connection = new \PDO($this->driver . ':'.'host=' . $this->host .';dbname=' . $this->dbname, $this->name, $this->password);
@@ -20,7 +20,7 @@ class Database
             throw $e;   
         }
     }
-    public function close(): void
+    private function close(): void
     {
         $this->connection = null;
     }

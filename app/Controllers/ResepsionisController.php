@@ -6,6 +6,8 @@ use App\Database;
 
 class ResepsionisController
 {
+    private $baseurl = '/stay-ease/'; 
+
     private $db;
 
     public function __construct()

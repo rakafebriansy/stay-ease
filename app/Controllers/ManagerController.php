@@ -6,6 +6,8 @@ use App\Database;
 
 class ManagerController
 {
+    private $baseurl = '/stay-ease/'; 
+
     private $db;
 
     public function __construct()
@@ -15,6 +17,26 @@ class ManagerController
     public function setLogin()
     {
         View::set('pages/manager-login');
+    }
+    public function login()
+    {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $sql = <<<SQL
+            SELECT username, password FROM tamu WHERE username = :username AND password = :password;
+        SQL;
+        $result = $this->db->executeNonQuery($sql,[
+            'username' => $username,
+            'password' => $password
+        ]);
+        if($result) {
+            View::redirectTo($this->baseurl . 'tamu-beranda');
+        }
+        View::redirectWith($this->baseurl . 'tamu-login', 'Username atau password salah');
+    }
+    public function index()
+    {
+        View::set('pages/tamu-beranda');
     }
 }
 
