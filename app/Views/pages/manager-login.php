@@ -1,6 +1,7 @@
 <?php ob_start(); 
 $baseurl = '/stay-ease/'; 
 ?>
+
 <main class="grid grid-cols-2">
     <div class="relative w-full">
         <img src="public/img/aside.png" class="h-screen w-full" alt="">

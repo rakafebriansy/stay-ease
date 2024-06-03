@@ -32,7 +32,7 @@ class TamuController
         if($result) {
             View::redirectTo($this->baseurl . 'tamu-beranda');
         }
-        View::redirectWith($this->baseurl . 'tamu-login', 'Username atau password salah');
+        View::redirectWith($this->baseurl . 'tamu-login', 'Username atau password salah',true);
     }
     public function setRegister()
     {
