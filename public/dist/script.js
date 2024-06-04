@@ -18,6 +18,7 @@ document.querySelectorAll('#dropdown-kamar li').forEach(element => {
         const li = event.target;
         const btn = document.getElementById('dropdown-kamar-btn');
         btn.firstElementChild.innerText = li.innerText;
+        document.getElementById('idKamar').value = li.dataset.id;
         toggleDropdownKamar(btn);
     });
 });

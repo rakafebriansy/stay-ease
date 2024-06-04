@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Core\View;
 use App\Database;
 use App\Models\Kamar;
+use App\Models\Reservasi;
 use App\Models\Tamu;
 use App\Models\TipeKamar;
 
@@ -134,6 +135,35 @@ class TamuController
             'tipe_kamar' => $tipe_kamar,
             'kamars' => $kamars,
         ]);
+    }
+    public function reservasi()
+    {
+        $tanggal_checkin = $_POST['tanggal_checkin'];
+        $tanggal_checkout = $_POST['tanggal_checkout'];
+        $id_kamar = $_POST['id_kamar'];
+
+        if(!isset($tanggal_checkin) || empty($tanggal_checkin)) {
+            View::redirectWith($this->baseurl . 'tamu-reservasi/' . $_POST['id_tipe_kamar'], 'Tanggal Check In tidak boleh kosong',true);
+        }
+        if(!isset($tanggal_checkout) || empty($tanggal_checkout)) {
+            View::redirectWith($this->baseurl . 'tamu-reservasi/' . $_POST['id_tipe_kamar'], 'Tanggal Check Out tidak boleh kosong',true);
+        }
+        if(!isset($id_kamar) || empty($id_kamar)) {
+            View::redirectWith($this->baseurl . 'tamu-reservasi/' . $_POST['id_tipe_kamar'], 'Pilihan Kamar tidak boleh kosong',true);
+        }
+        $m_reservasi = new Reservasi();
+        if($m_reservasi->create([
+            'tanggal_checkin' => $tanggal_checkin,
+            'tanggal_checkout' => $tanggal_checkout,
+            'id_kamar' => intval($id_kamar),
+            'id_tamu' => $_SESSION['id_tamu'],
+        ])) {
+            $m_kamar = new Kamar();
+            if($m_kamar->update(['dipesan' => 1],intval($id_kamar))) {
+                View::redirectWith($this->baseurl . 'tamu-pesan/' . $_POST['id_tipe_kamar'], 'Reservasi berhasil');
+            }
+        }
+        View::redirectWith($this->baseurl . 'tamu-reservasi/' . $_POST['id_tipe_kamar'], 'Reservasi gagal',true);
     }
 }
 

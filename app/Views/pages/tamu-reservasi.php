@@ -3,7 +3,7 @@ $baseurl = '/stay-ease/';
 $css = '../public/dist/output.css';
 $js = '../public/dist/script.js';
 ?>
-<nav class="flex justify-center small-shadow fixed w-full z-30 bg-white">
+<nav class="flex justify-center small-shadow fixed w-full z-50 bg-white">
     <div class="w-[90%] flex justify-center items-center relative h-[4rem]">
         <img src="../public/img/logo-no-bg.png" class=" h-12 absolute left-8" alt="">
         <ul class="flex justify-center gap-4 font-rubik-semibold">
@@ -15,14 +15,14 @@ $js = '../public/dist/script.js';
 <main>
     <div class="w-full flex justify-center flex-col items-center py-[6rem]">
         <h1 class="text-5xl font-rubik-semibold text-center mb-5">Reservasi Kamar</h1>
-        <div class="w-[80%]">
+        <form action="<?=$baseurl . 'tamu-reservasi'?>" method="POST" class="w-[80%]">
             <div class="mb-3">
                 <label for="username">Username</label>
-                <input class="border-border-gray border-[0.05rem] w-full h-[3rem] p-2 rounded-md" readonly type="text" name="username" value="<?=$tamu['username']?>" id="">
+                <input class="border-border-gray border-[0.05rem] w-full h-[3rem] p-2 rounded-md" readonly type="text" value="<?=$tamu['username']?>" id="">
             </div>
             <div class="mb-3">
                 <label for="nik">NIK</label>
-                <input class="border-border-gray border-[0.05rem] w-full h-[3rem] p-2 rounded-md" readonly type="text" name="nik" value="<?=$tamu['nik']?>" id="">
+                <input class="border-border-gray border-[0.05rem] w-full h-[3rem] p-2 rounded-md" readonly type="text" value="<?=$tamu['nik']?>" id="">
             </div>
             <div class="mb-3 grid grid-cols-2 gap-4">
                 <div class="">
@@ -36,10 +36,11 @@ $js = '../public/dist/script.js';
             </div>
             <div class="mb-3">
                 <label for="tipe_kamar">Tipe Kamar</label>
-                <input class="border-border-gray border-[0.05rem] w-full h-[3rem] p-2 rounded-md" readonly type="text" name="tipe_kamar" value="<?=$tipe_kamar['tipe']?>" id="">
+                <input type="hidden" name="id_tipe_kamar" value="<?=$tipe_kamar['id']?>">
+                <input class="border-border-gray border-[0.05rem] w-full h-[3rem] p-2 rounded-md" readonly type="text" value="<?=$tipe_kamar['tipe']?>" id="">
             </div>
             <div class="mb-3 flex flex-col items-start cursor-pointer">
-                <input type="hidden" name="" id="idNomorKamar">
+                <input type="hidden" name="id_kamar" id="idKamar">
                 <label for="tipe_kamar">Nomor Kamar</label>
                 <div id="dropdown-kamar-btn" class="border-border-gray border-[0.05rem] w-[20%] h-[3rem] ps-2 pe-3 rounded-md flex justify-between items-center">
                     <p class="unselectable">Pilih</p>
@@ -53,21 +54,21 @@ $js = '../public/dist/script.js';
                     foreach($kamars as $key => $kamar): 
                         if($key < $count-1):
                     ?>
-                    <li class="border-border-gray border-b-[0.05rem] p-2 w-full unselectable"><?= $kamar['nomor'];?></li>
+                    <li class="border-border-gray border-b-[0.05rem] p-2 w-full unselectable" data-id="<?=$kamar['id']?>"><?= $kamar['nomor'];?></li>
                     <?php else: ?>
-                    <li class="border-border-gray p-2 w-full unselectable">201</li>
+                    <li class="border-border-gray p-2 w-full unselectable" data-id="<?=$kamar['id']?>"><?= $kamar['nomor'];?></li>
                     <?php endif;endforeach; ?>
                 </ul>
             </div>
             <div class="mb-4 flex flex-col items-start">
                 <label for="tipe_kamar">Harga</label>
-                <input class="border-border-gray border-[0.05rem] h-[3rem] p-2 rounded-md w-[20%]" readonly type="text" name="harga" value="<?='Rp ' . number_format($tipe_kamar['harga'],0,',','.')?>" id="">
+                <input class="border-border-gray border-[0.05rem] h-[3rem] p-2 rounded-md w-[20%]" readonly type="text" value="<?='Rp ' . number_format($tipe_kamar['harga'],0,',','.')?>" id="">
             </div>
             <div class="flex justify-start text-white gap-4">
                 <a href="<?=$baseurl . 'tamu-pesan/' . $tipe_kamar['id']?>" class="px-4 py-2 bg-prime rounded-md">Batalkan</a>
                 <button type="submit" class="px-4 py-2 bg-prime rounded-md">Bayar Sekarang</button>
             </div>
-        </div>
+        </form>
     </div>
 </main>
 <footer class="mt-16 px-8 py-4 flex justify-between bg-[#FBFBFB] text-xs">

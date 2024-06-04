@@ -3,7 +3,7 @@ $baseurl = '/stay-ease/';
 $css = '../public/dist/output.css';
 $js = '../public/dist/script.js';
 ?>
-<nav class="flex justify-center small-shadow fixed w-full z-30 bg-white">
+<nav class="flex justify-center small-shadow fixed w-full z-50 bg-white">
     <div class="w-[90%] flex justify-center items-center relative h-[4rem]">
         <img src="../public/img/logo-no-bg.png" class=" h-12 absolute left-8" alt="">
         <ul class="flex justify-center gap-4 font-rubik-semibold">
