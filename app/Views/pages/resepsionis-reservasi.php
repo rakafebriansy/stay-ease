@@ -1,77 +1,69 @@
 <?php ob_start(); 
 $baseurl = '/stay-ease/'; 
+$js = 'public/dist/resepsionis-reservasi.js';
 ?>
-
 <nav class="flex justify-center small-shadow fixed w-full z-50 bg-white">
     <div class="w-[90%] flex justify-center items-center relative h-[4rem]">
         <img src="public/img/logo-no-bg.png" class=" h-12 absolute left-8" alt="">
         <ul class="flex justify-center gap-4 font-rubik-semibold">
-            <li><a href="#hero-img" class="is-active">Beranda</a></li>
-            <li><a href="<?=$baseurl . 'resepsionis-reservasi'?>">Reservasi</a></li>
+            <li><a href="<?=$baseurl . 'resepsionis-beranda'?>">Beranda</a></li>
+            <li><a href="#" class="is-active">Reservasi</a></li>
         </ul>
     </div>
 </nav>
 <main>
-    <div id="hero-img" class="relative w-full ">
-        <img src="public/img/hero.png" class="h-[100vh] w-full" alt="">
-        <div class="absolute left-1/2 top-1/2 flex flex-col gap-3 -translate-x-1/2 -translate-y-1/2 z-10 text-center text-white">
-            <h1 class="font-rubik-bold text-8xl">StayEase</h1>
-            <p class="text-2xl">Reservasi Hotel dengan Mudah dan Nyaman</p>
-        </div>
-    </div>
-    <div id="tentang-kami" class="my-16 flex justify-center">
-        <div class="w-[80%] grid grid-cols-2 gap-10">
-            <img src="public/img/about-us.png" class=" rounded-2xl shadow-lg" alt="">
-            <div class="flex flex-col gap-3 justify-center">
-                <p class="font-rubik-bold text-lg text-prime">Selamat datang</p>
-                <h2 class="font-rubik-bold text-6xl">Tentang Kami</h2>
-                <p class="break-words">Selamat datang di StayEase, tempat di mana kenyamanan, keramahtamahan, dan layanan terbaik berpadu dalam harmoni yang sempurna. Terletak di lokasi strategis yang mudah diakses, StayEase merupakan pilihan ideal bagi pelancong bisnis maupun rekreasi yang mencari pengalaman menginap tak terlupakan.</p>
-            </div>
-        </div>
-    </div>
-    <div id="visi-misi" class="my-16 flex justify-center">
-        <div class="w-[80%] grid grid-cols-2 gap-10">
-            <div class="flex justify-between gap-4 items-center">
-                <img src="public/img/ellipse.png" alt="">
-                <div>
-                    <p class="font-rubik-bold">Visi</p>
-                    <p class="break-words">“Menjadi hotel terkemuka yang mengutamakan kenyamanan dan kepuasan tamu dengan pelayanan terbaik dan fasilitas unggul, serta berkomitmen memberikan pengalaman menginap yang tak terlupakan.”</p>
-                </div>
-            </div>
-            <div class="flex justify-between gap-4 items-center">
-                <img src="public/img/ellipse.png" alt="">
-                <div>
-                    <p class="font-rubik-bold">Misi</p>
-                    <ol>
-                        <li>1. Memberikan Pelayanan Prima</li>
-                        <li>2. Menyediakan Fasilitas Unggul</li>
-                        <li>3.  Menciptakan Pengalaman Menginap yang Tak Terlupakan</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="text-4xl flex justify-center my-16">
-        <div class="w-[90%]">
-            <h2>Our Living Room</h2>
-            <h2>Rooms & Suits</h2>
-        </div>
-    </div>
-    <div id="tipe-kamar" class="flex justify-center my-16">
-        <div class="w-[90%]">
-            <h2 class="text-4xl font-rubik-semibold text-center">Tipe Kamar Terbaik</h2>
-            <div class="grid grid-cols-3 gap-6 my-10">
-                <?php for($i=0; $i<3; $i++): ?>
-                    <div class="flex flex-col rounded-xl items-center box-border p-3 shadow-md">
-                        <img src="public/img/rooms/superior.png" class="rounded-lg" alt="">
-                        <div class="mt-3 flex flex-col justify-between items-center h-[6rem]">
-                            <h3 class="text-center font-rubik-bold">Superior Room</h3>
-                            <p class="text-xs break-words text-center">
-                            Didesain dengan elegan dan dilengkapi dengan fasilitas modern, kamar ini menawarkan tempat tidur king size yang nyaman, televisi layar datar, akses Wi-Fi gratis, meja kerja, dan kamar mandi pribadi dengan perlengkapan mandi premium.
-                            </p>
-                        </div>
-                    </div>
-                <?php endfor; ?>
+    <div class="w-full flex justify-start flex-col items-center py-[6rem]">
+        <h1 class="text-4xl text-center mb-5 font-rubik-semibold">Daftar Reservasi</h1>
+        <div class="w-[90%] p-5 flex justify-center">
+            <div>
+                <table class="text-sm">
+                    <tr class="text-base font-rubik-semibold">
+                        <td class="py-3 px-2 min-w-[10rem]">No NIK</td>
+                        <td class="py-3 px-2 min-w-[10rem]">Nama</td>
+                        <td class="py-3 px-2 min-w-[10rem]">Tipe Kamar</td>
+                        <td class="py-3 px-2 min-w-[12rem]">Tanggal Check-in</td>
+                        <td class="py-3 px-2 min-w-[12rem]">Tanggal Check-out</td>
+                        <td class="py-3 px-2 min-w-[8rem]">Harga</td>
+                        <td class="py-3 px-2 min-w-[8rem]">Status</td>
+                    </tr>
+                    <?php foreach($reservasis as $key => $reservasi): ?>
+                        <?php if($key%2 == 0): ?>
+                            <tr class="bg-[#F4F5BB]">
+                                <td class="py-3 px-2 text-center"><?= $reservasi['nik'];?></td>
+                                <td class="py-3 px-2 text-center"><?= $reservasi['nama'];?></td>
+                                <td class="py-3 px-2 text-center"><?= $reservasi['tipe'];?></td>
+                                <td class="py-3 px-2 text-center"><?= $reservasi['tanggal_checkin'];?></td>
+                                <td class="py-3 px-2 text-center"><?= $reservasi['tanggal_checkout'];?></td>
+                                <td class="py-3 px-2 text-center">Rp <?= number_format($reservasi['harga'],0,',','.');?></td>
+                                <td class="py-4 px-2 text-center flex items-center h-full justify-center">
+                                <?php if(empty($reservasi['id_resepsionis'])): ?>
+                                    <input type="hidden" value="<?=$reservasi['id_reservasi']?>">
+                                    <input class="text-center verifikasi" type="checkbox" name="verifikasi-<?=$reservasi['id_reservasi']?>">
+                                <?php else: ?>
+                                    <p>Telah diverifikasi</p>
+                                <?php endif; ?>
+                                </>
+                            </tr>
+                        <?php else: ?>
+                            <tr>
+                                <td class="p-2 text-center"><?= $reservasi['nik'];?></td>
+                                <td class="p-2 text-center"><?= $reservasi['nama'];?></td>
+                                <td class="p-2 text-center"><?= $reservasi['tipe'];?></td>
+                                <td class="p-2 text-center"><?= $reservasi['tanggal_checkin'];?></td>
+                                <td class="p-2 text-center"><?= $reservasi['tanggal_checkout'];?></td>
+                                <td class="p-2 text-center">Rp <?= number_format($reservasi['harga'],0,',','.');?></td>
+                                <td class="py-4 px-2 text-center flex items-center h-full justify-center">
+                                <?php if(empty($reservasi['id_resepsionis'])): ?>
+                                    <input type="hidden" value="<?=$reservasi['id_reservasi']?>">
+                                    <input class="text-center verifikasi" type="checkbox" name="verifikasi-<?=$reservasi['id_reservasi']?>">
+                                <?php else: ?>
+                                    <p>Telah diverifikasi</p>
+                                <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endif ?>
+                    <?php endforeach; ?>
+                </table>
             </div>
         </div>
     </div>

@@ -19,7 +19,6 @@
         </div>
     <?php unset($_SESSION['success']); endif; ?>
     <?= $body ?? ''; ?>
-    <script src="../public/dist/script.js"></script>
-    <!-- <script src="<?=$js ?? 'public/dist/script.js'?>"></script> -->
+    <script src="<?=$js ?? 'public/dist/script.js'?>"></script>
 </body>
 </html>

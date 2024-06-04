@@ -1,7 +1,7 @@
 <?php ob_start(); 
 $baseurl = '/stay-ease/'; 
 $css = '../public/dist/output.css';
-$js = '../public/dist/script.js';
+$js = '../public/dist/tamu-reservasi.js';
 ?>
 <nav class="flex justify-center small-shadow fixed w-full z-50 bg-white">
     <div class="w-[90%] flex justify-center items-center relative h-[4rem]">

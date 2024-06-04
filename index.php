@@ -16,6 +16,8 @@ Router::add('GET', $baseurl . 'manager-beranda', ManagerController::class, 'inde
 Router::add('GET', $baseurl . 'resepsionis-login', ResepsionisController::class, 'setLogin');
 Router::add('POST', $baseurl . 'resepsionis-login', ResepsionisController::class, 'login');
 Router::add('GET', $baseurl . 'resepsionis-beranda', ResepsionisController::class, 'index');
+Router::add('GET', $baseurl . 'resepsionis-reservasi', ResepsionisController::class, 'setReservasi');
+Router::add('POST', $baseurl . 'resepsionis-verifikasi', ResepsionisController::class, 'verifikasi');
 Router::add('GET', $baseurl . 'tamu-register', TamuController::class, 'setRegister');
 Router::add('POST', $baseurl . 'tamu-register', TamuController::class, 'register');
 Router::add('GET', $baseurl . 'tamu-login', TamuController::class, 'setLogin');
