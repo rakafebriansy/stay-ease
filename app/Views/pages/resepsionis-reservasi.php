@@ -38,7 +38,7 @@ $js = 'public/dist/resepsionis-reservasi.js';
                                 <td class="py-4 px-2 text-center flex items-center h-full justify-center">
                                 <?php if(empty($reservasi['id_resepsionis'])): ?>
                                     <input type="hidden" value="<?=$reservasi['id_reservasi']?>">
-                                    <input class="text-center verifikasi" type="checkbox" name="verifikasi-<?=$reservasi['id_reservasi']?>">
+                                    <input id="verifikasi-check-<?=$reservasi['id_reservasi']?>" class="text-center verifikasi" type="checkbox" name="verifikasi-<?=$reservasi['id_reservasi']?>">
                                 <?php else: ?>
                                     <p>Telah diverifikasi</p>
                                 <?php endif; ?>
@@ -55,7 +55,7 @@ $js = 'public/dist/resepsionis-reservasi.js';
                                 <td class="py-4 px-2 text-center flex items-center h-full justify-center">
                                 <?php if(empty($reservasi['id_resepsionis'])): ?>
                                     <input type="hidden" value="<?=$reservasi['id_reservasi']?>">
-                                    <input class="text-center verifikasi" type="checkbox" name="verifikasi-<?=$reservasi['id_reservasi']?>">
+                                    <input id="verifikasi-check-<?=$reservasi['id_reservasi']?>" class="text-center verifikasi" type="checkbox" name="verifikasi-<?=$reservasi['id_reservasi']?>">
                                 <?php else: ?>
                                     <p>Telah diverifikasi</p>
                                 <?php endif; ?>
@@ -113,6 +113,15 @@ $js = 'public/dist/resepsionis-reservasi.js';
         </div>
     </div>
 </footer>
+<div id="dropdownVerifikasi" class="hidden w-screen absolute top-0 bg-[rgba(0,0,0,0.5)] justify-center items-center z-[60] h-screen">
+    <div class="w-[30%] h-[30%] flex bg-white justify-center items-center flex-col gap-8 rounded-2xl">
+        <p class="font-rubik-semibold text-[#858181]">Apakah Anda Yakin Ingin Memverifikasi?</p>
+        <div class="flex gap-8">
+            <button type="button" data-id="" id="verifikasiBtn" class="bg-[#0052F2] w-[5rem] h-[3rem] rounded-xl text-white" onclick="submitVerifikasi(this)">Ya</button>
+            <button type="button" class="bg-[#C50404] w-[5rem] h-[3rem] rounded-xl text-white" onclick="toggleVerifikasi()">Tidak</button>
+        </div>
+    </div>
+</div>
 <?php $body = ob_get_clean(); ?>
 
 <?php include __DIR__ . '/../main.php'; ?>
