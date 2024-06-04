@@ -4,10 +4,10 @@ namespace App\Models;
 use App\Database;
 use App\Model;
 
-class Resepsionis implements Model
+class Reservasi implements Model
 {
     private $db;
-    private $table = 'resepsionis';
+    private $table = 'reservasi';
     public function __construct() {
         $this->db = new Database();
     }

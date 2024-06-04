@@ -2,8 +2,9 @@
 
 namespace App\Models;
 use App\Database;
+use App\Model;
 
-class Tamu
+class Tamu implements Model
 {
     private $db;
     private $table = 'tamu';

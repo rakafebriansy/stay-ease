@@ -2,8 +2,9 @@
 
 namespace App\Models;
 use App\Database;
+use App\Model;
 
-class Manager
+class Manager implements Model
 {
     private $db;
     private $table = 'manager';

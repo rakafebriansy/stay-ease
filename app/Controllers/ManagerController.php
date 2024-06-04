@@ -22,9 +22,10 @@ class ManagerController
     }
     public function login()
     {
-        $manager = new Manager();
-        $result = $manager->find($_POST['username'],'username');
-        if($result && $result['password'] == $_POST['password']) {
+        $m_manager = new Manager();
+        $manager = $m_manager->find($_POST['username'],'username');
+        if($manager && $manager['password'] == $_POST['password']) {
+            $_SESSION['id_manager'] = $manager['id'];
             View::redirectTo($this->baseurl . 'manager-beranda');
         }
         View::redirectWith($this->baseurl . 'manager-login', 'Username atau password salah',true);

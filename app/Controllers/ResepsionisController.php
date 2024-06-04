@@ -21,9 +21,10 @@ class ResepsionisController
     }
     public function login()
     {
-        $resepsionis = new Resepsionis();
-        $result = $resepsionis->find($_POST['username'],'username');
-        if($result && $result['password'] == $_POST['password']) {
+        $m_resepsionis = new Resepsionis();
+        $resepsionis = $m_resepsionis->find($_POST['username'],'username');
+        if($resepsionis && $resepsionis['password'] == $_POST['password']) {
+            $_SESSION['id_resepsionis'] = $resepsionis['id'];
             View::redirectTo($this->baseurl . 'resepsionis-beranda');
         }
         View::redirectWith($this->baseurl . 'resepsionis-login', 'Username atau password salah',true);

@@ -22,6 +22,7 @@ Router::add('GET', $baseurl . 'tamu-login', TamuController::class, 'setLogin');
 Router::add('POST', $baseurl . 'tamu-login', TamuController::class, 'login');
 Router::add('GET', $baseurl . 'tamu-beranda', TamuController::class, 'index');
 Router::add('GET', $baseurl . 'tamu-pesan/([0-9a-zA-Z]*)', TamuController::class, 'setPesan');
+Router::add('GET', $baseurl . 'tamu-reservasi/([0-9a-zA-Z]*)', TamuController::class, 'setReservasi');
 Router::add('GET', $baseurl . 'fresh', LandingController::class, 'fresh');
 // Router::add('GET', $baseurl . 'admin/login', App\Controllers\Admin\LoginController::class, 'setLogin');
 // Router::add('GET', $baseurl . 'guru/soal/([0-9a-zA-Z]*)', App\Controllers\Guru\UjianController::class, 'setSoal');

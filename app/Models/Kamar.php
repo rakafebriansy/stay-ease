@@ -4,10 +4,10 @@ namespace App\Models;
 use App\Database;
 use App\Model;
 
-class Resepsionis implements Model
+class Kamar implements Model
 {
     private $db;
-    private $table = 'resepsionis';
+    private $table = 'kamar';
     public function __construct() {
         $this->db = new Database();
     }
@@ -26,6 +26,11 @@ class Resepsionis implements Model
     public function find($value,$column = 'id')
     {
         return $this->db->readOne($this->table,[$column,'=',$value]);
+    }
+    public function findAvailable($value,$column = 'id')
+    {
+        $sql = "SELECT * FROM " . $this->table . " WHERE $column = $value AND dipesan = 0;";
+        return $this->db->executeNoBind($sql,true);
     }
     public function all()
     {

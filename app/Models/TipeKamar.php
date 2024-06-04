@@ -2,9 +2,10 @@
 
 namespace App\Models;
 use App\Database;
+use App\Model;
 
-class TipeKamar
-{
+class TipeKamar implements Model
+{ 
     private $db;
     private $table = 'tipe_kamar';
     public function __construct() {

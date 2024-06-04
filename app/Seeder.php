@@ -163,6 +163,50 @@ class Seeder
             'id_fasilitas' => 8,
             'id_tipe_kamar' => 3
         ]);
+
+        //KAMAR
+        $this->db->create('kamar',[
+            'id' => 1,
+            'nomor' => 101,
+            'dipesan' => 0,
+            'id_tipe_kamar' => 1,
+            'id_manager' => 1
+        ]);
+        $this->db->create('kamar',[
+            'id' => 2,
+            'nomor' => 102,
+            'dipesan' => 0,
+            'id_tipe_kamar' => 1,
+            'id_manager' => 1
+        ]);
+        $this->db->create('kamar',[
+            'id' => 3,
+            'nomor' => 103,
+            'dipesan' => 0,
+            'id_tipe_kamar' => 1,
+            'id_manager' => 1
+        ]);
+        $this->db->create('kamar',[
+            'id' => 4,
+            'nomor' => 201,
+            'dipesan' => 0,
+            'id_tipe_kamar' => 2,
+            'id_manager' => 1
+        ]);
+        $this->db->create('kamar',[
+            'id' => 5,
+            'nomor' => 202,
+            'dipesan' => 0,
+            'id_tipe_kamar' => 2,
+            'id_manager' => 1
+        ]);
+        $this->db->create('kamar',[
+            'id' => 6,
+            'nomor' => 301,
+            'dipesan' => 0,
+            'id_tipe_kamar' => 3,
+            'id_manager' => 1
+        ]);
     }
     public function fresh()
     {

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Core\View;
 use App\Database;
+use App\Models\Kamar;
 use App\Models\Tamu;
 use App\Models\TipeKamar;
 
@@ -22,9 +23,10 @@ class TamuController
     }
     public function login()
     {
-        $tamu = new Tamu();
-        $result = $tamu->find($_POST['username'],'username');
-        if($result && $result['password'] == $_POST['password']) {
+        $m_tamu = new Tamu();
+        $tamu = $m_tamu->find($_POST['username'],'username');
+        if($tamu && $tamu['password'] == $_POST['password']) {
+            $_SESSION['id_tamu'] = $tamu['id'];
             View::redirectTo($this->baseurl . 'tamu-beranda');
         }
         View::redirectWith($this->baseurl . 'tamu-login', 'Username atau password salah',true);
@@ -80,8 +82,8 @@ class TamuController
         }
 
         //REGISTER
-        $tamu = new Tamu();
-        if($tamu->create([
+        $m_tamu = new Tamu();
+        if($m_tamu->create([
             'username' => $username,
             'nik' => $nik,
             'no_telp' => $no_telepon,
@@ -96,7 +98,6 @@ class TamuController
     {
         $tipe_kamar = new TipeKamar();
         $results = $tipe_kamar->all();
-        // var_dump($results);die;
         View::set('pages/tamu-beranda',[
             'tipe_kamars' => $results
         ]);
@@ -115,6 +116,23 @@ class TamuController
         View::set('pages/tamu-pesan',[
             'tipe_kamar' => $result,
             'fasilitas' => $fasilitas
+        ]);
+    }
+    public function setReservasi($id_tipe_kamar)
+    {
+        $m_tamu = new Tamu();
+        $tamu = $m_tamu->find($_SESSION['id_tamu']);
+
+        $m_tipe_kamar = new TipeKamar();
+        $tipe_kamar = $m_tipe_kamar->find($id_tipe_kamar); 
+
+        $m_kamar = new Kamar();
+        $kamars = $m_kamar->findAvailable($id_tipe_kamar,'id_tipe_kamar');
+
+        View::set('pages/tamu-reservasi',[
+            'tamu' => $tamu,
+            'tipe_kamar' => $tipe_kamar,
+            'kamars' => $kamars,
         ]);
     }
 }
