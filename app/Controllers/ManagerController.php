@@ -34,9 +34,28 @@ class ManagerController
     {
         $tipe_kamar = new TipeKamar();
         $tipe_kamars = $tipe_kamar->all();
-        // var_dump($tipe_kamars);die;
         View::set('pages/manager-beranda',[
             'tipe_kamars' => $tipe_kamars
+        ]);
+    }
+    public function setReport()
+    {
+        $sql_penghasilan = <<<SQL
+            SELECT SUM(harga) AS penghasilan FROM reservasi r
+            JOIN kamar k ON (k.id = r.id_kamar)
+            JOIN tipe_kamar tk ON (tk.id = k.id_tipe_kamar)
+        SQL;
+        $sql_data_penghasilan = <<<SQL
+            SELECT MONTH(r.tanggal_checkin) as bulan, SUM(harga) AS penghasilan FROM reservasi r
+            JOIN kamar k ON (k.id = r.id_kamar)
+            JOIN tipe_kamar tk ON (tk.id = k.id_tipe_kamar)
+            GROUP BY MONTH(r.tanggal_checkin)
+        SQL;
+        $total_penghasilan = $this->db->executeNoBind($sql_penghasilan);
+        $penghasilans = $this->db->executeNoBind($sql_data_penghasilan,true);
+        View::set('pages/manager-report', [
+            'total_penghasilan' => $total_penghasilan,
+            'penghasilans' => json_encode($penghasilans)
         ]);
     }
 }

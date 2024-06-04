@@ -13,6 +13,7 @@ Router::add('GET', $baseurl, LandingController::class, 'index');
 Router::add('GET', $baseurl . 'manager-login', ManagerController::class, 'setLogin');
 Router::add('POST', $baseurl . 'manager-login', ManagerController::class, 'login');
 Router::add('GET', $baseurl . 'manager-beranda', ManagerController::class, 'index');
+Router::add('GET', $baseurl . 'manager-report', ManagerController::class, 'setReport');
 Router::add('GET', $baseurl . 'resepsionis-login', ResepsionisController::class, 'setLogin');
 Router::add('POST', $baseurl . 'resepsionis-login', ResepsionisController::class, 'login');
 Router::add('GET', $baseurl . 'resepsionis-beranda', ResepsionisController::class, 'index');
