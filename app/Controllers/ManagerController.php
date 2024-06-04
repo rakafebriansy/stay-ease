@@ -18,6 +18,9 @@ class ManagerController
     }
     public function setLogin()
     {
+        if(isset($_COOKIE['rememberme']) && str_contains($_COOKIE['rememberme'],'manager')) {
+            View::redirectTo($this->baseurl . 'tamu-beranda');
+        }
         View::set('pages/manager-login');
     }
     public function login()
@@ -26,6 +29,9 @@ class ManagerController
         $manager = $m_manager->find($_POST['username'],'username');
         if($manager && $manager['password'] == $_POST['password']) {
             $_SESSION['id_manager'] = $manager['id'];
+            if(isset($_POST['rememberme'])) {
+                setcookie('rememberme','manager',time() + 86400);
+            }
             View::redirectTo($this->baseurl . 'manager-beranda');
         }
         View::redirectWith($this->baseurl . 'manager-login', 'Username atau password salah',true);

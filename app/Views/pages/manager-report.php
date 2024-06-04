@@ -6,7 +6,7 @@ $js = 'public/dist/resepsionis-reservasi.js';
     <div class="w-[90%] flex justify-center items-center relative h-[4rem]">
         <img src="public/img/logo-no-bg.png" class=" h-12 absolute left-8" alt="">
         <ul class="flex justify-center gap-4 font-rubik-semibold">
-            <li><a href="<?=$baseurl . 'resepsionis-beranda'?>">Beranda</a></li>
+            <li><a href="<?=$baseurl . 'manager-beranda'?>">Beranda</a></li>
             <li><a href="#" class="is-active">Reservasi</a></li>
         </ul>
     </div>

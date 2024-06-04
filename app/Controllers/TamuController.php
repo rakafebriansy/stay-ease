@@ -20,6 +20,9 @@ class TamuController
     }
     public function setLogin()
     {
+        if(isset($_COOKIE['rememberme']) && str_contains($_COOKIE['rememberme'],'tamu')) {
+            View::redirectTo($this->baseurl . 'tamu-beranda');
+        }
         View::set('pages/tamu-login');
     }
     public function login()
@@ -28,6 +31,9 @@ class TamuController
         $tamu = $m_tamu->find($_POST['username'],'username');
         if($tamu && $tamu['password'] == $_POST['password']) {
             $_SESSION['id_tamu'] = $tamu['id'];
+            if(isset($_POST['rememberme'])) {
+                setcookie('rememberme','tamu',time() + 86400);
+            }
             View::redirectTo($this->baseurl . 'tamu-beranda');
         }
         View::redirectWith($this->baseurl . 'tamu-login', 'Username atau password salah',true);

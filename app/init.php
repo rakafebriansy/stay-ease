@@ -18,5 +18,8 @@ require 'app/Controllers/LandingController.php';
 require 'app/Controllers/ManagerController.php';
 require 'app/Controllers/ResepsionisController.php';
 require 'app/Controllers/TamuController.php';
+require 'app/Middleware/MustLoginResepsionisMiddleware.php';
+require 'app/Middleware/MustLoginManagerMiddleware.php';
+require 'app/Middleware/MustLoginTamuMiddleware.php';
 
 ?>

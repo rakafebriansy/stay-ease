@@ -18,6 +18,9 @@ class ResepsionisController
     }
     public function setLogin()
     {
+        if(isset($_COOKIE['rememberme']) && str_contains($_COOKIE['rememberme'],'resepsionis')) {
+            View::redirectTo($this->baseurl . 'tamu-beranda');
+        }
         View::set('pages/resepsionis-login');
     }
     public function login()
@@ -26,6 +29,9 @@ class ResepsionisController
         $resepsionis = $m_resepsionis->find($_POST['username'],'username');
         if($resepsionis && $resepsionis['password'] == $_POST['password']) {
             $_SESSION['id_resepsionis'] = $resepsionis['id'];
+            if(isset($_POST['rememberme'])) {
+                setcookie('rememberme','resepsionis',time() + 86400);
+            }
             View::redirectTo($this->baseurl . 'resepsionis-beranda');
         }
         View::redirectWith($this->baseurl . 'resepsionis-login', 'Username atau password salah',true);
