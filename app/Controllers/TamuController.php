@@ -152,18 +152,37 @@ class TamuController
             View::redirectWith($this->baseurl . 'tamu-reservasi/' . $_POST['id_tipe_kamar'], 'Pilihan Kamar tidak boleh kosong',true);
         }
         $m_reservasi = new Reservasi();
-        if($m_reservasi->create([
+        $id_reservasi = $m_reservasi->createReturningId([
             'tanggal_checkin' => $tanggal_checkin,
             'tanggal_checkout' => $tanggal_checkout,
             'id_kamar' => intval($id_kamar),
             'id_tamu' => $_SESSION['id_tamu'],
-        ])) {
+        ]);
+        if($id_reservasi) {
             $m_kamar = new Kamar();
             if($m_kamar->update(['dipesan' => 1],intval($id_kamar))) {
-                View::redirectWith($this->baseurl . 'tamu-pesan/' . $_POST['id_tipe_kamar'], 'Reservasi berhasil');
+                View::redirectWith($this->baseurl . 'tamu-tagihan/' . $id_reservasi, 'Reservasi berhasil');
             }
         }
-        View::redirectWith($this->baseurl . 'tamu-reservasi/' . $_POST['id_tipe_kamar'], 'Reservasi gagal',true);
+        View::redirectWith($this->baseurl . 'tamu-pesan/' . $_POST['id_tipe_kamar'], 'Reservasi gagal',true);
+    }
+    public function setTagihan($id_reservasi)
+    {
+        $sql_reservasi = <<<SQL
+            SELECT tk.tipe, tk.id as id_tipe_kamar, r.id AS id_reservasi, tk.harga FROM reservasi r
+            JOIN kamar k ON (k.id = r.id_kamar)
+            JOIN tipe_kamar tk ON (tk.id = k.id_tipe_kamar)
+            WHERE r.id = $id_reservasi
+        SQL;
+        $reservasi = $this->db->executeNoBind($sql_reservasi);
+
+        $m_tamu = new Tamu();
+        $tamu = $m_tamu->find($_SESSION['id_tamu']);
+
+        View::set('pages/tamu-tagihan', [
+            'reservasi' => $reservasi,
+            'tamu' => $tamu,
+        ]);
     }
 }
 

@@ -15,6 +15,10 @@ class Reservasi implements Model
     {
         return $this->db->create($this->table,$requests);
     }
+    public function createReturningId($requests)
+    {
+        return $this->db->create($this->table,$requests,true);
+    }
     public function update($requests, $id)
     {
         return $this->db->update($this->table,$requests,$id);
